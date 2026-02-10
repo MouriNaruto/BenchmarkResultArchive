@@ -1,0 +1,28 @@
+misaki@HimiMisakiBenchmarkARM64:~/Library/7z$ ./7zz b
+
+7-Zip (z) 25.01 (arm64) : Copyright (c) 1999-2025 Igor Pavlov : 2025-08-03
+ 64-bit arm_v:8-A locale=C.UTF-8 Threads:64 OPEN_MAX:1024, ASM
+
+Compiler:  ver:9.2.1 20191025 GCC 9.2.1 : UNALIGNED
+Linux : 6.1.0-42-cloud-arm64 : #1 SMP Debian 6.1.159-1 (2025-12-30) : aarch64
+PageSize:4KB THP:madvise hwcap:EEFFFFFF:CRC32:SHA1:SHA2:SHA3:SHA512:AES:ASIMD hwcap2:73F7
+arm64
+
+1T CPU Freq (MHz):  3386  3397  3398  3398  3397  3398  3397
+32T CPU Freq (MHz): 3193% 3384   3194% 3391  
+64T CPU Freq (MHz): 6378% 3382   6388% 3389  
+
+RAM size:  257236 MB,  # CPU hardware threads:  64
+RAM usage:  14239 MB,  # Benchmark threads:     64
+
+                       Compressing  |                  Decompressing
+Dict     Speed Usage    R/U Rating  |      Speed Usage    R/U Rating
+         KiB/s     %   MIPS   MIPS  |      KiB/s     %   MIPS   MIPS
+
+22:     378169  5561   6615 367883  |    6392575  6342   8594 545042
+23:     296133  4817   6264 301725  |    6180785  6342   8431 534736
+24:     288336  4953   6259 310020  |    5911418  6329   8195 518698
+25:     276048  4940   6380 315182  |    5439800  6130   7895 483959
+----------------------------------  | ------------------------------
+Avr:    309672  5068   6380 323702  |    5981144  6286   8279 520609
+Tot:            5677   7329 422156
