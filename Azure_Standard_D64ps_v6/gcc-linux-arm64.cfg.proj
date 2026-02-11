@@ -1,0 +1,289 @@
+#------------------------------------------------------------------------------
+# SPEC CPU(R) 2006 config for gcc/g++/gfortran on Linux RISC-V (Little-Endian)
+#------------------------------------------------------------------------------
+#
+# Usage: (1) Copy this to a new name
+#             cd $SPEC/config
+#             cp Example-x.cfg myname.cfg
+#        (2) Change items that are marked 'EDIT' (search for it)
+#
+# SPEC tested this config file with:
+#    Compiler version(s):    GCC 11.3.0
+#    Operating system(s):    Ubuntu 22.04.1 LTS
+#    Hardware:               StarFive (rv64imafdc sifive,u74-mc)
+#
+# If your system differs, this config file might not work.
+# You might find a better config file at https://www.spec.org/cpu2006/results
+#
+# Note: Older GCC
+#    Please use the newest GCC that you can. The default version packaged with
+#    your operating system may be old; please check for alternate packages that
+#    may provide a newer version.   If you must use an older version, you may
+#    find that you run into unexpected errors.  Sometimes, errors may be
+#    resolved by reducing the optimization level (search below for OPTIMIZE).
+#
+# Compiler issues: Contact your compiler vendor, not SPEC.
+# For SPEC help:   https://www.spec.org/cpu2006/Docs/techsupport.html
+#------------------------------------------------------------------------------
+
+
+#--------- Label --------------------------------------------------------------
+# Arbitrary string to tag binaries (no spaces allowed)
+#                  Two Suggestions: # (1) EDIT this label as you try new ideas.
+#   define label "mytest"           # (2)      Use a label meaningful to *you*.
+%ifndef %{label}
+%   define label "honoka"           # (2)      Use a label meaningful to *you*.
+%endif
+
+
+#--------- Preprocessor -------------------------------------------------------
+%ifndef %{bits}                # EDIT to control 32 or 64 bit compilation.  Or,
+%   define  bits        64     #      you can set it on the command line using:
+%endif                         #      'runcpu --define bits=nn'
+
+%ifndef %{build_ncpus}         # EDIT to adjust number of simultaneous compiles.
+%   define  build_ncpus 64     #      Or, you can set it on the command line:
+%endif                         #      'runcpu --define build_ncpus=nn'
+
+# Don't change this part.
+%define    os           LINUX
+%if %{bits} == 64
+%   define model        -mabi=lp64
+%elif %{bits} == 32
+%   define model        -mabi=ilp32
+%else
+%   error Please define number of bits - see instructions in config file
+%endif
+%if %{label} =~ m/ /
+%   error Your label "%{label}" contains spaces.  Please try underscores instead.
+%endif
+%if %{label} !~ m/^[a-zA-Z0-9._-]+$/
+%   error Illegal character in label "%{label}".  Please use only alphanumerics, underscore, hyphen, and period.
+%endif
+
+
+#--------- Global Settings ----------------------------------------------------
+# For info, see:
+#            https://www.spec.org/cpu2006/Docs/config.html#fieldname
+#   Example: https://www.spec.org/cpu2006/Docs/config.html#tune
+
+action               = validate
+check_md5            = 1
+ext                  = kotori
+flagsurl000          = $[top]/config/flags/gcc.xml
+flagsurl001          = $[top]/config/flags/Microsoft-linux-platform-revA.xml
+makeflags            = --jobs=%{build_ncpus}
+output_format        = txt,html,cfg,pdf,csv
+reportable           = 1
+sysinfo_program      = specperl $[top]/Docs/sysinfo.new -f
+tune                 = base   # EDIT: optionally add ",peak" here.  See
+                              # https://www.spec.org/cpu2006/Docs/overview.html#Q16
+
+
+#--------- How Many CPUs? -----------------------------------------------------
+# Both SPECrate and SPECspeed can test multiple chips / cores / hw threads
+#    - For SPECrate,  you set the number of copies.
+#    - For SPECspeed, you set the number of threads.
+# See: https://www.spec.org/cpu2006/Docs/system-requirements.html#MultipleCPUs
+#
+#    q. How many should I set?
+#    a. Unknown, you will have to try it and see!
+#
+# To get you started, here are some suggestions:
+#
+#     copies - This config file defaults to testing only 1 copy.   You might
+#              try changing it to match the number of cores on your system,
+#              or perhaps the number of virtual CPUs as reported by:
+#                     grep -c processor /proc/cpuinfo
+#              Be sure you have enough memory.  See:
+#              https://www.spec.org/cpu2006/Docs/system-requirements.html#memory
+#
+#     threads - This config file sets a starting point.  You could try raising
+#               it.  A higher thread count is much more likely to be useful for
+#               fpspeed than for intspeed.
+#
+default:
+   copies           = 1   # EDIT to change number of copies (see above)
+
+
+#------- Compilers ------------------------------------------------------------
+default:
+#  EDIT: The parent directory for your compiler.
+#        Do not include the trailing /bin/
+#        Do not include a trailing slash
+#  Examples:
+#   1  On a Red Hat system, you said:
+#      'dnf install gcc-toolset-12'
+#      Use:                 %   define gcc_dir "/opt/rh/gcc-toolset-12/root/usr"
+#
+#   2  You built GCC in:                        /disk1/mybuild/gcc-12.2.0/bin/gcc
+#      Use:                 %   define gcc_dir "/disk1/mybuild/gcc-12.2.0"
+#
+#   3  You want:                                /usr/bin/gcc
+#      Use:                 %   define gcc_dir "/usr"
+#      WARNING: See section "Older GCC" above.
+#
+%ifndef %{gcc_dir}
+%   define  gcc_dir        "/usr"  # EDIT (see above)
+%endif
+
+# EDIT: GCC 10 introduced several changes affecting SPEC CPU 2006 benchmarks.
+#       This config file assumes you are using GCC 10 or later.  If that is
+#       not correct, remove (or comment out) the next line.
+#
+%define GCCge10             # EDIT: for GCC 9 or earlier, remove this line
+
+# EDIT if needed: the preENV line adds library directories to the runtime
+#      path.  You can adjust it, or add lines for other environment variables.
+#      See: https://www.spec.org/cpu2006/Docs/config.html#preenv
+#      and: https://gcc.gnu.org/onlinedocs/gcc/Environment-Variables.html
+   #preENV_LD_LIBRARY_PATH = %{gcc_dir}/lib64/:/lib64
+   #preENV_LD_LIBRARY_PATH = %{gcc_dir}/lib64/:/lib64:%{ENV_LD_LIBRARY_PATH}
+    preENV_LD_LIBRARY_PATH = %{gcc_dir}/lib/:/lib
+   SPECLANG                = %{gcc_dir}/bin/
+   CC                      = $(SPECLANG)gcc      -std=gnu89  %{model}
+   CXX                     = $(SPECLANG)g++      -std=c++03  %{model}
+   FC                      = $(SPECLANG)gfortran -std=legacy %{model}
+   OBJ                     = .o
+
+default:
+%if %{bits} == 64
+   sw_base_ptrsize = 64-bit
+   sw_peak_ptrsize = Not Applicable
+  #sw_peak_ptrsize = 64-bit
+%else
+   sw_base_ptrsize = 32-bit
+   sw_peak_ptrsize = Not Applicable
+  #sw_peak_ptrsize = 32-bit
+%endif
+
+
+#--------- Portability --------------------------------------------------------
+default:               # data model applies to all benchmarks
+PORTABILITY = -DSPEC_CPU_LP64
+
+# Benchmark-specific portability (ordered by last 2 digits of bmark number)
+
+400.perlbench:  #lang='C'
+   CPORTABILITY = -DSPEC_CPU_LINUX_X64
+
+462.libquantum:  #lang='C'
+   CPORTABILITY = -DSPEC_CPU_LINUX
+
+464.h264ref:  #lang='C'
+   CPORTABILITY = -fsigned-char
+
+483.xalancbmk:  #lang='CXX'
+   CXXPORTABILITY = -DSPEC_CPU_LINUX
+
+416.gamess:  #lang='F'
+%     ifdef %{GCCge10}                      # workaround for GCC v10 (and presumably later)
+         EXTRA_FFLAGS = -funconstrained-commons
+%     endif
+
+481.wrf:  #lang='F,C'
+   CPORTABILITY = -DSPEC_CPU_CASE_FLAG -DSPEC_CPU_LINUX
+%     ifdef %{GCCge10}                      # workaround for GCC v10 (and presumably later)
+         EXTRA_FFLAGS = -fallow-argument-mismatch
+%     endif
+
+482.sphinx3:  #lang='C'
+   CPORTABILITY = -fsigned-char
+
+
+#-------- Tuning Flags common to Base and Peak --------------------------------
+#
+# Speed (OpenMP and Autopar allowed)
+#
+#intspeed,fpspeed:
+   #EXTRA_OPTIMIZE    = -fopenmp -DSPEC_OPENMP
+#fpspeed:
+   #
+   # 627.cam4 needs a big stack; the preENV will apply it to all
+   # benchmarks in the set, as required by the rules.
+   #
+   #preENV_OMP_STACKSIZE = 192M
+
+
+#--------  Base Tuning Flags ----------------------------------------------
+# EDIT if needed -- If you run into errors, you may need to adjust the
+#                   optimization.  See topic "Older GCC" above.
+#
+default=base:       # flags for all base
+   OPTIMIZE         = -march=native -O2 -flto -fno-strict-aliasing
+
+
+#--------  Peak Tuning Flags ----------------------------------------------
+default=peak:
+   OPTIMIZE         = -march=native -Ofast -flto -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -funroll-loops
+   PASS1_CFLAGS     = -fprofile-generate
+   PASS2_CFLAGS     = -fprofile-use
+   PASS1_CXXFLAGS   = -fprofile-generate
+   PASS2_CXXFLAGS   = -fprofile-use
+   PASS1_FFLAGS     = -fprofile-generate
+   PASS2_FFLAGS     = -fprofile-use
+   PASS1_LDFLAGS    = -fprofile-generate
+   PASS2_LDFLAGS    = -fprofile-use
+
+
+#------------------------------------------------------------------------------
+# Tester and System Descriptions - EDIT all sections below this point
+#------------------------------------------------------------------------------
+#   For info about any field, see
+#             https://www.spec.org/cpu2006/Docs/config.html#fieldname
+#   Example:  https://www.spec.org/cpu2006/Docs/config.html#hw_memory
+#-------------------------------------------------------------------------------
+
+#--------- EDIT to match your version -----------------------------------------
+default:
+   sw_compiler000   = C/C++/Fortran: Version 12.2.0 of GCC, the
+   sw_compiler001   = GNU Compiler Collection
+
+#--------- EDIT info about you ------------------------------------------------
+# To understand the difference between hw_vendor/sponsor/tester, see:
+#     https://www.spec.org/cpu2006/Docs/config.html#test_sponsor
+default: # Important: keep this line
+   hw_vendor          = Microsoft Corporation
+   tester             = Misaki
+   test_sponsor       = Kenji Mouri
+   license_num        = 3939
+   prepared_by        = misaki                                # Whatever you like: is never output
+
+
+#--------- EDIT system availability dates -------------------------------------
+default: # Important: keep this line
+                        # Example                             # Brief info about field
+   hw_avail           = Feb-2026                              # Date of LAST hardware component to ship
+   sw_avail           = Jan-2026                              # Date of LAST software component to ship
+
+#--------- EDIT system information --------------------------------------------
+default: # Important: keep this line
+                        # Example                             # Brief info about field
+   hw_cpu_name        = Azure Cobalt 100                      # chip name
+   hw_cpu_char        = Neoverse-N2 @ 3.4GHz
+   hw_fpu             = Integrated
+   hw_cpu_mhz         = 3400                                  # Nominal/Max chip frequency, in MHz
+   hw_disk            = 256 GB Premium SSD                    # Size, type, other perf-relevant info
+   hw_model           = Azure Standard D64ps v6               # system model name
+   hw_nchips          = 1                                     # number chips enabled
+   hw_ncores          = 64                                    # number cores enabled
+   hw_ncpuorder       = 1 chips                               # Ordering options
+   hw_nthreadspercore = 1                                     # number threads enabled per core
+   hw_ncoresperchip   = 64
+   hw_other           = None                                  # Other perf-relevant hw, or "None"
+   hw_memory          = 256 GB                                # The 'PCn-etc' is from the JEDEC
+                                                              # label on the DIMM.
+   hw_pcache          = 4 MB I + 4 MB D on chip per core      # Primary cache size, type, location
+   hw_scache          = 64 MB I+D on chip per core            # Second cache or "None"
+   hw_tcache          = 128 MB                                # Third  cache or "None"
+   hw_ocache          = None                                  # Other cache or "None"
+   sw_file            = ext4                                  # File system
+   sw_os001           = Debian GNU/Linux 12 (bookworm)        # Operating system
+   sw_os002           = 6.1.0-42-cloud-arm64                  # and version
+   sw_other           = None                                  # Other perf-relevant sw, or "None"
+   sw_state           = Run level 3 (multi-user)              # Software state.
+
+# Note: Some commented-out fields above are automatically set to preliminary
+# values by sysinfo
+#       https://www.spec.org/cpu2006/Docs/config.html#sysinfo
+# Uncomment lines for which you already know a better answer than sysinfo
