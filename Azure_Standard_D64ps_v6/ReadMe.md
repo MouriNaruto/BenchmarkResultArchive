@@ -8,7 +8,7 @@ Machine sponsored by Kenji Mouri.
   - glibc allocator: [txt](7zb.txt)
   - mimalloc allocator: [txt](m7zb.txt)
 - benchncnn (Running by Kenji Mouri.): [markdown](benchncnn.md)
-- SPEC 2006 (Running by Himi Misaki.)
+- SPEC CPU 2006 (Running by Himi Misaki.)
   - Configuration: [cfg.proj](gcc-linux-arm64.cfg.proj)
   - CINT2006: [pdf](CINT2006.pdf), [tar.gz](cint2006.tar.gz)
   - CFP2006: [pdf](CFP2006.pdf), [tar.gz](cfp2006.tar.gz)
