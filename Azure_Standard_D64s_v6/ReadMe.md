@@ -3,3 +3,5 @@
 Machine sponsored by Kenji Mouri.
 
 ## Results
+
+- benchncnn (Running by Kenji Mouri.): [markdown](benchncnn.md)
