@@ -5,6 +5,8 @@ Machine sponsored by Kenji Mouri.
 ## Results
 
 - 7-Zip ZS Benchmark (Running by Himi Misaki.)
+  - Prebuilt binaries:
+    [Intel C/C++ compiler, glibc & mimalloc](Micc-7zst.tar.xz)
   - glibc allocator:
     [txt (GCC)](g7zsb.txt)
     [txt (Clang)](c7zsb.txt)
