@@ -6,7 +6,7 @@ Machine sponsored by Kenji Mouri.
 
 - 7-Zip ZS Benchmark (Running by Himi Misaki.)
   - Prebuilt binaries:
-    [Intel C/C++ compiler, glibc & mimalloc](Micc-7zst.tar.xz)
+    [Intel C/C++ compiler, glibc & mimalloc](Micc-7zst.tar)
   - glibc allocator:
     [txt (GCC)](g7zsb.txt)
     [txt (Clang)](c7zsb.txt)
@@ -23,19 +23,19 @@ Machine sponsored by Kenji Mouri.
 - dmidecode (Running by Kenji Mouri.): [txt](dmidecode.txt)
 - SPEC CPU 2006 (Running by Himi Misaki.)
   - `-march=native`
-    - CINT2006: [pdf](CINT2006_native.pdf), [tar.gz](cint2006_native.tar.gz)
-    - CFP2006: [pdf](CFP2006_native.pdf), [tar.gz](cfp2006_native.tar.gz)
+    - CINT2006: [pdf](CINT2006_native.pdf), [tar](cint2006_native.tar)
+    - CFP2006: [pdf](CFP2006_native.pdf), [tar](cfp2006_native.tar)
   - `-march=native -mprefer-vector-width=512`
     - CINT2006 & CFP2006:
       [pdf (CINT2006)](CINT2006_avx512.pdf),
       [pdf (CFP2006)](CFP2006_avx512.pdf),
-      [tar.gz](cpu2006_avx512.tar.gz)
+      [tar](cpu2006_avx512.tar)
     - CINT2006rate & CFP2006rate:
       [pdf (CINT2006rate)](CINT2006rate_avx512.pdf),
       [pdf (CFP2006rate)](CFP2006rate_avx512.pdf),
-      [tar.gz](cpu2006rate_avx512.tar.gz)
+      [tar](cpu2006rate_avx512.tar)
   - `-march=sapphirerapids -mprefer-vector-width=512`
     - CINT2006 & CFP2006:
       [pdf (CINT2006)](CINT2006_spr_avx512.pdf),
       [pdf (CFP2006)](CFP2006_spr_avx512.pdf),
-      [tar.gz](cpu2006_spr_avx512.tar.gz)
+      [tar](cpu2006_spr_avx512.tar)
