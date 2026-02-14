@@ -1,0 +1,29 @@
+misaki@HimiMisakiBenchmarkIntel64:~/Library/7zstd$ ./7zz b
+
+7-Zip (z) 25.01 ZS v1.5.7 R4 (x64) : Copyright (c) 1999-2025 Igor Pavlov, 2016-2026 Tino Reichardt, 2022-2026 Sergey G. Brester : 2026-01-10
+ 64-bit locale=C.UTF-8 Threads:64 OPEN_MAX:1024, ASM
+
+Compiler:  ver:13.3.0 GCC 13.3.0 : SSE2
+Linux : 6.1.0-43-cloud-amd64 : #1 SMP PREEMPT_DYNAMIC Debian 6.1.162-1 (2026-02-08) : x86_64 : Microsoft Hv : Hv#1 : 10.0.26100.1.0.1480
+PageSize:4KB THP:always hwcap:6 hwcap2:2
+INTEL(R) XEON(R) PLATINUM 8573C
+(C06F2)
+
+1T CPU Freq (MHz):  3577  3587  3587  3587  3587  3587  3587
+32T CPU Freq (MHz): 3184% 3468   3191% 3477  
+64T CPU Freq (MHz): 6360% 3194   6381% 3206  
+
+RAM size:  257734 MB,  # CPU hardware threads:  64
+RAM usage:  14239 MB,  # Benchmark threads:     64
+
+                       Compressing  |                  Decompressing
+Dict     Speed Usage    R/U Rating  |      Speed Usage    R/U Rating
+         KiB/s     %   MIPS   MIPS  |      KiB/s     %   MIPS   MIPS
+
+22:     327421  5325   5981 318516  |    3976102  6357   5333 339009
+23:     311835  5518   5758 317723  |    3904082  6368   5304 337765
+24:     307124  5645   5850 330220  |    3809226  6356   5259 334241
+25:     310319  5823   6085 354311  |    3698675  6330   5199 329057
+----------------------------------  | ------------------------------
+Avr:    314175  5578   5919 330192  |    3847021  6353   5274 335018
+Tot:            5965   5596 332605

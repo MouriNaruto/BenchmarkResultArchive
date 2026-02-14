@@ -1,0 +1,29 @@
+misaki@HimiMisakiBenchmarkIntel64:~/Library/Micc-7zst$ ./mi7zsavx2 b
+
+7-Zip (z) 25.01 ZS v1.5.7 R4 (x64) : Copyright (c) 1999-2025 Igor Pavlov, 2016-2026 Tino Reichardt, 2022-2026 Sergey G. Brester : 2026-01-10
+ 64-bit locale=C.UTF-8 Threads:64 OPEN_MAX:1024, ASM
+
+Compiler:  CLANG 17.0.0 ver:Intel(R) oneAPI DPC++/C++ Compiler 2023.2.0 (2023.2.0.20230622) GCC 4.2.1 : AVX2
+Linux : 6.1.0-43-cloud-amd64 : #1 SMP PREEMPT_DYNAMIC Debian 6.1.162-1 (2026-02-08) : x86_64 : Microsoft Hv : Hv#1 : 10.0.26100.1.0.1480
+PageSize:4KB THP:always hwcap:6 hwcap2:2
+INTEL(R) XEON(R) PLATINUM 8573C
+(C06F2)
+
+1T CPU Freq (MHz):  3583  3586  3587  3587  3587  3587  3587
+32T CPU Freq (MHz): 3188% 3469   3190% 3476  
+64T CPU Freq (MHz): 6370% 3199   6384% 3207  
+
+RAM size:  257734 MB,  # CPU hardware threads:  64
+RAM usage:  14239 MB,  # Benchmark threads:     64
+
+                       Compressing  |                  Decompressing
+Dict     Speed Usage    R/U Rating  |      Speed Usage    R/U Rating
+         KiB/s     %   MIPS   MIPS  |      KiB/s     %   MIPS   MIPS
+
+22:     309683  5068   5944 301260  |    3847571  6164   5322 328050
+23:     294790  5214   5760 300356  |    3800961  6207   5298 328844
+24:     295739  5494   5788 317979  |    3796906  6331   5262 333160
+25:     299683  5623   6085 342166  |    3692355  6310   5206 328495
+----------------------------------  | ------------------------------
+Avr:    299974  5350   5894 315440  |    3784448  6253   5272 329637
+Tot:            5801   5583 322539
