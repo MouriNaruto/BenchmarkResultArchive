@@ -22,9 +22,12 @@ Machine sponsored by Kenji Mouri.
 - benchncnn (Running by Kenji Mouri.): [markdown](benchncnn.md)
 - dmidecode (Running by Kenji Mouri.): [txt](dmidecode.txt)
 - SPEC CPU 2006 (Running by Himi Misaki.)
+  - Configuration: [cfg.proj](gcc-linux-amd64.cfg.proj)
   - `-march=native`
     - CINT2006: [pdf](CINT2006_native.pdf), [tar](cint2006_native.tar)
     - CFP2006: [pdf](CFP2006_native.pdf), [tar](cfp2006_native.tar)
+    - CINT2006rate: [pdf](CINT2006rate_native.pdf), [tar](cint2006rate_native.tar)
+    - CFP2006rate: [pdf](CFP2006rate_native.pdf), [tar](cfp2006rate_native.tar)
   - `-march=native -mprefer-vector-width=512`
     - CINT2006 & CFP2006:
       [pdf (CINT2006)](CINT2006_avx512.pdf),
