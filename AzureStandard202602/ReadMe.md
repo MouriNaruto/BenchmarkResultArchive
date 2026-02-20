@@ -10,7 +10,7 @@ All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
   [flags](Binaries/icc-flags.txt)
   [binaries](Binaries/Micc-7zst.tar)
 
-## Results
+## Detailed Results
 
 ### Microsoft Azure Standard D64ps v6 (64 vcpu, 256 GiB RAM)
 
@@ -124,4 +124,3 @@ All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
     - CFP2006rate:
       [pdf](D64as_v7/CFP2006rate_avx512.pdf),
       [tar](D64as_v7/cfp2006rate_avx512.tar)
-
