@@ -1,0 +1,10 @@
+i7zsavx         -march=corei7-avx -mprefer-vector-width=256 -Ofast -funroll-loops -qopt-mem-layout-trans=4
+i7zsavx2        -march=core-avx2 -mprefer-vector-width=256 -Ofast -funroll-loops -qopt-mem-layout-trans=4
+i7zsavx512      -march=common-avx512 -mprefer-vector-width=512 -Ofast -funroll-loops -qopt-mem-layout-trans=4
+i7zssse4        -march=corei7 -mprefer-vector-width=128 -Ofast -funroll-loops -qopt-mem-layout-trans=4
+i7zszen4        -march=znver4 -mprefer-vector-width=256 -Ofast -funroll-loops -qopt-mem-layout-trans=4
+mi7zsavx        -march=corei7-avx -mprefer-vector-width=256 -Ofast -funroll-loops -qopt-mem-layout-trans=4      -o /Library/Mimalloc/lib/mimalloc-2.2/mimalloc.o
+mi7zsavx2       -march=core-avx2 -mprefer-vector-width=256 -Ofast -funroll-loops -qopt-mem-layout-trans=4       -o /Library/Mimalloc/lib/mimalloc-2.2/mimalloc.o
+mi7zsavx512     -march=common-avx512 -mprefer-vector-width=512 -Ofast -funroll-loops -qopt-mem-layout-trans=4   -o /Library/Mimalloc/lib/mimalloc-2.2/mimalloc.o
+mi7zssse4       -march=corei7 -mprefer-vector-width=128 -Ofast -funroll-loops -qopt-mem-layout-trans=4          -o /Library/Mimalloc/lib/mimalloc-2.2/mimalloc.o
+mi7zszen4       -march=znver4 -mprefer-vector-width=256 -Ofast -funroll-loops -qopt-mem-layout-trans=4          -o /Library/Mimalloc/lib/mimalloc-2.2/mimalloc.o

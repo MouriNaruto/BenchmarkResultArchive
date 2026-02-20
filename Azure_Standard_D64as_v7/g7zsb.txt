@@ -1,0 +1,29 @@
+misaki@HimiMisakiBenchmarkAMD64:~/Library/7zstd$ ./7zz b
+
+7-Zip (z) 25.01 ZS v1.5.7 R4 (x64) : Copyright (c) 1999-2025 Igor Pavlov, 2016-2026 Tino Reichardt, 2022-2026 Sergey G. Brester : 2026-01-10
+ 64-bit locale=C.UTF-8 Threads:64 OPEN_MAX:1024, ASM
+
+Compiler:  ver:13.3.0 GCC 13.3.0 : SSE2
+Linux : 6.1.0-43-cloud-amd64 : #1 SMP PREEMPT_DYNAMIC Debian 6.1.162-1 (2026-02-08) : x86_64 : Microsoft Hv : Hv#1 : 10.0.26100.1.0.1480
+PageSize:4KB THP:always hwcap:2 hwcap2:2
+AMD EPYC 9V45 96-Core Processor
+(B00F21)
+
+1T CPU Freq (MHz):  4518  4534  4533  4532  4534  4537  4538
+32T CPU Freq (MHz): 3158% 4460   3190% 4450  
+64T CPU Freq (MHz): 6354% 4286   6366% 4299  
+
+RAM size:  257735 MB,  # CPU hardware threads:  64
+RAM usage:  14239 MB,  # Benchmark threads:     64
+
+                       Compressing  |                  Decompressing
+Dict     Speed Usage    R/U Rating  |      Speed Usage    R/U Rating
+         KiB/s     %   MIPS   MIPS  |      KiB/s     %   MIPS   MIPS
+
+22:     386915  5813   6475 376391  |    5193693  6146   7205 442823
+23:     367390  5867   6380 374327  |    5180501  6326   7085 448196
+24:     357346  5845   6574 384219  |    5015012  6361   6917 440043
+25:     354425  5881   6881 404669  |    4812737  6360   6732 428171
+----------------------------------  | ------------------------------
+Avr:    366519  5852   6577 384901  |    5050486  6298   6985 439808
+Tot:            6075   6781 412355
