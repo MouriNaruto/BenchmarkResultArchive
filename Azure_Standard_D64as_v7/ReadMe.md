@@ -20,6 +20,7 @@ Machine sponsored by Kenji Mouri.
     [txt (Intel C/C++ compiler, AVX2)](mi7zsavx2b.txt)
     [txt (Intel C/C++ compiler, AVX-512)](mi7zsavx512b.txt)
     [txt (Intel C/C++ compiler, Zen 4)](mi7zszen4b.txt)
+- benchncnn (Running by Kenji Mouri.): [markdown](benchncnn.md)
 - SPEC CPU 2006 (Running by Himi Misaki.)
   - Configuration: [cfg.proj](gcc-linux-amd64.cfg.proj)
   - `-march=native`
