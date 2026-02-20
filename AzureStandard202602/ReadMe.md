@@ -4,6 +4,12 @@ All instances are sponsored by Kenji Mouri.
 
 All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
 
+## Prebuilt Binaries
+
+- Intel C/C++ compiler, glibc & mimalloc (for x64):
+  [flags](Binaries/icc-flags.txt)
+  [binaries](Binaries/Micc-7zst.tar)
+
 ## Results
 
 ### Microsoft Azure Standard D64ps v6 (64 vcpu, 256 GiB RAM)
@@ -30,9 +36,6 @@ All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
 ### Microsoft Azure Standard D64s v6 (64 vcpu, 256 GiB RAM)
 
 - 7-Zip ZS Benchmark (Running by Himi Misaki.)
-  - Intel C/C++ compiler, glibc & mimalloc Prebuilt binaries:
-    [flags](D64s_v6/icc-flags.txt)
-    [binaries](D64s_v6/Micc-7zst.tar)
   - glibc allocator:
     [txt (GCC)](D64s_v6/g7zsb.txt)
     [txt (Clang)](D64s_v6/c7zsb.txt)
@@ -80,9 +83,6 @@ All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
 ### Microsoft Azure Standard D64as v7 (64 vcpu, 256 GiB RAM)
 
 - 7-Zip ZS Benchmark (Running by Himi Misaki.)
-  - Intel C/C++ compiler, glibc & mimalloc Prebuilt binaries:
-    [flags](D64as_v7/icc-flags.txt)
-    [binaries](D64as_v7/Micc-7zst.tar)
   - glibc allocator:
     [txt (GCC)](D64as_v7/g7zsb.txt)
     [txt (Clang)](D64as_v7/c7zsb.txt)
