@@ -4,7 +4,7 @@ All instances are sponsored by Kenji Mouri.
 
 All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
 
-All rate series SPEC CPU 2006 benchmark uses `copies=64`.
+All rate series SPEC CPU 2006 benchmark uses `copies=64` and `numactl`.
 
 ## Prebuilt Binaries
 
@@ -14,8 +14,15 @@ All rate series SPEC CPU 2006 benchmark uses `copies=64`.
 
 ## Detailed Results
 
-### Microsoft Azure Standard D64ps v6 (64 vcpu, 256 GiB RAM)
+### Microsoft Azure Standard D64ps v6
 
+- Type: 64 vcpu, 256 GiB RAM
+- CPU: Azure Cobalt 100 (Neoverse-N2) @ 3.4GHz
+  - Note: lscpu or something like fastfetch only report Neoverse-N2, the "Azure
+    Cobalt 100" name is only mentioned in the Microsoft document.
+  - Note: CPU frequency is measured by 7-Zip Benchmark.
+  - Note: It should be 64 cores with 64 threads.
+- OS: Debian 12 with Kernel 6.1.0-42-cloud-arm64 and GCC 12.2.0
 - 7-Zip Benchmark (Running by Himi Misaki.)
   - glibc allocator: [txt](D64ps_v6/7zb.txt)
   - mimalloc allocator: [txt](D64ps_v6/m7zb.txt)
@@ -35,8 +42,12 @@ All rate series SPEC CPU 2006 benchmark uses `copies=64`.
     [pdf](D64ps_v6/CFP2006rate.pdf),
     [tar](D64ps_v6/cfp2006rate.tar)
 
-### Microsoft Azure Standard D64s v6 (64 vcpu, 256 GiB RAM)
+### Microsoft Azure Standard D64s v6
 
+- Type: 64 vcpu, 256 GiB RAM
+- CPU: INTEL XEON PLATINUM 8573C @ 3.6GHz
+  - Note: It should be 32 cores with 64 threads.
+- OS: Debian 12 with Kernel 6.1.0-43-cloud-amd64 and GCC 12.2.0
 - 7-Zip ZS Benchmark (Running by Himi Misaki.)
   - glibc allocator:
     [txt (GCC)](D64s_v6/g7zsb.txt)
@@ -82,8 +93,12 @@ All rate series SPEC CPU 2006 benchmark uses `copies=64`.
       [pdf (CFP2006)](D64s_v6/CFP2006_spr_avx512.pdf),
       [tar](D64s_v6/cpu2006_spr_avx512.tar)
 
-### Microsoft Azure Standard D64as v7 (64 vcpu, 256 GiB RAM)
+### Microsoft Azure Standard D64as v7
 
+- Type: 64 vcpu, 256 GiB RAM
+- CPU: AMD EPYC 9V45 96-Core @ 4.3GHz
+  - Note: It should be 32 cores with 64 threads.
+- OS: Debian 12 with Kernel 6.1.0-43-cloud-amd64 and GCC 12.2.0
 - 7-Zip ZS Benchmark (Running by Himi Misaki.)
   - glibc allocator:
     [txt (GCC)](D64as_v7/g7zsb.txt)
