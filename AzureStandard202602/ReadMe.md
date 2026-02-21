@@ -4,6 +4,8 @@ All instances are sponsored by Kenji Mouri.
 
 All instances are 64 vcpu, 256 GiB RAM, and 256 GiB OS Disk.
 
+All rate series SPEC CPU 2006 benchmark uses `copies=64`.
+
 ## Prebuilt Binaries
 
 - Intel C/C++ compiler, glibc & mimalloc (for x64):
